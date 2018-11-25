@@ -27,4 +27,5 @@ public abstract class State {
     public abstract void update(float delta);
     // SpriteBatch - container for everything that need to render to the screen all of textures and other stuff
     public abstract void render(SpriteBatch pSpriteBatch);
+    public abstract void dispose();
 }
