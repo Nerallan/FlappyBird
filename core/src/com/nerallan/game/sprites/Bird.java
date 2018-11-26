@@ -9,10 +9,10 @@ import com.badlogic.gdx.math.Vector3;
 
 public class Bird {
     private static final int GRAVITY = -15;
+    private static final int MOVEMENT = 100;
 
     private Vector3 mPosition;
     private Vector3 mVelocity;
-
     private Texture mBird;
 
     public Bird(int x, int y){
@@ -35,7 +35,7 @@ public class Bird {
         }
         // going to multiply everything by delta time
         mVelocity.scl(pDelta);
-        mPosition.add(0, mVelocity.y, 0);
+        mPosition.add(MOVEMENT * pDelta, mVelocity.y, 0);
         if(mPosition.y < 0){
             mPosition.y = 0;
         }

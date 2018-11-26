@@ -10,6 +10,7 @@ import java.util.Random;
  */
 
 public class Tube {
+    public static final int TUBE_WIDTH = 52;
     private static final int FLUCTUATION = 130;
     private static final int TUBE_GAP = 100;
     private static final int LOWEST_OPENING = 120;
@@ -28,19 +29,24 @@ public class Tube {
         mPosBotTube = new Vector2(pX, mPosTopTube.y - TUBE_GAP - mBottomTube.getHeight());
     }
 
-        public Texture getTopTube() {
-            return mTopTube;
-        }
+    public Texture getTopTube() {
+        return mTopTube;
+    }
 
-        public Texture getBottomTube() {
-            return mBottomTube;
-        }
+    public Texture getBottomTube() {
+        return mBottomTube;
+    }
 
-        public Vector2 getPosTopTube() {
-            return mPosTopTube;
-        }
+    public Vector2 getPosTopTube() {
+        return mPosTopTube;
+    }
 
-        public Vector2 getPosBotTube() {
-            return mPosBotTube;
-        }
+    public Vector2 getPosBotTube() {
+        return mPosBotTube;
+    }
+
+    public void reposition(float pX){
+        mPosTopTube.set(pX, mRandom.nextInt(FLUCTUATION) + TUBE_GAP + LOWEST_OPENING);
+        mPosBotTube.set(pX, mPosTopTube.y - TUBE_GAP - mBottomTube.getHeight());
+    }
 }
