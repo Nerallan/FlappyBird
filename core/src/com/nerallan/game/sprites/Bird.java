@@ -30,11 +30,15 @@ public class Bird {
     }
 
     public void update(float pDelta){
-        mVelocity.add(0, GRAVITY, 0);
-
+        if(mPosition.y > 0){
+            mVelocity.add(0, GRAVITY, 0);
+        }
+        // going to multiply everything by delta time
         mVelocity.scl(pDelta);
         mPosition.add(0, mVelocity.y, 0);
-
+        if(mPosition.y < 0){
+            mPosition.y = 0;
+        }
         mVelocity.scl(1/pDelta);
     }
 
