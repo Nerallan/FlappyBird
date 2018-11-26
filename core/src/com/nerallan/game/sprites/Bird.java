@@ -37,4 +37,8 @@ public class Bird {
 
         mVelocity.scl(1/pDelta);
     }
+
+    public void jump(){
+        mVelocity.y = 250;
+    }
 }

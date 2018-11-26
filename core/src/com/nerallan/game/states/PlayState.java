@@ -12,17 +12,21 @@ import com.nerallan.game.sprites.Bird;
 
 public class PlayState extends State {
     private Bird mBird;
+    private Texture mBackground;
 
     public PlayState(GameStateManager pGameStateManager) {
         super(pGameStateManager);
         mBird = new Bird(50, 100);
         // set a viewport to only view a partial area of game world
         mCamera.setToOrtho(false, FlappyDemo.WIDTH / 2, FlappyDemo.HEIGHT / 2);
+        mBackground = new Texture("background.png");
     }
 
     @Override
     public void handleInput() {
-
+        if(Gdx.input.justTouched()){
+            mBird.jump();
+        }
     }
 
     @Override
@@ -36,6 +40,7 @@ public class PlayState extends State {
         // draw things on the screen in relation to camera
         pSpriteBatch.setProjectionMatrix(mCamera.combined);
         pSpriteBatch.begin();
+        pSpriteBatch.draw(mBackground, mCamera.position.x - (mCamera.viewportWidth / 2), 0);
         pSpriteBatch.draw(mBird.getBird(), mBird.getPosition().x, mBird.getPosition().y);
         pSpriteBatch.end();
     }
