@@ -2,6 +2,7 @@ package com.nerallan.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -16,11 +17,18 @@ public class FlappyDemo extends ApplicationAdapter {
 	private GameStateManager mGameStateManager;
 	private SpriteBatch mBatch;
 	Texture img;
-	
+	private Music mMusic;
+
+
+
 	@Override
 	public void create () {
 		mBatch = new SpriteBatch();
 		mGameStateManager = new GameStateManager();
+		mMusic = Gdx.audio.newMusic(Gdx.files.internal("music.mp3"));
+		mMusic.setLooping(true);
+		mMusic.setVolume(0.1f);
+		mMusic.play();
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		mGameStateManager.push(new MenuState(mGameStateManager));
 	}
@@ -31,5 +39,11 @@ public class FlappyDemo extends ApplicationAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		mGameStateManager.update(Gdx.graphics.getDeltaTime());
 		mGameStateManager.render(mBatch);
+	}
+
+	@Override
+	public void dispose() {
+		super.dispose();
+		mMusic.dispose();
 	}
 }

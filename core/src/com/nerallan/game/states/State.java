@@ -19,7 +19,6 @@ public abstract class State {
         this.mGameStateManager = pGameStateManager;
         mCamera = new OrthographicCamera();
         mMouse = new Vector3();
-
     }
 
     protected abstract void handleInput();

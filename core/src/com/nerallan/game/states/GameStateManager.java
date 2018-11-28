@@ -24,12 +24,12 @@ public class GameStateManager {
 
     // going to get it off the stack
     public void pop(){
-        mStates.pop();
+        mStates.pop().dispose();
     }
 
     // pop and instantly push a new state
     public void set(State pState){
-        mStates.pop();
+        mStates.pop().dispose();
         mStates.push(pState);
     }
 
